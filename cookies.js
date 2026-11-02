@@ -15,7 +15,7 @@
   'use strict';
 
   var CFG = {
-    GA_ID: 'G-XXXXXXXXXX',
+    GA_ID: 'G-Q8L8NW7M0M',
     ADS_ID: 'AW-18543832701',
     ADS_LEAD_LABEL: 'AW-18543832701/5ZWvCNufxbAdEP3csYpF',
     POLICY_URL: 'polityka-prywatnosci.html'
