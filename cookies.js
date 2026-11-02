@@ -16,7 +16,7 @@
 
   var CFG = {
     GA_ID: 'G-XXXXXXXXXX',
-    ADS_ID: '',
+    ADS_ID: 'AW-18543832701',
     ADS_LEAD_LABEL: '',
     POLICY_URL: 'polityka-prywatnosci.html'
   };
