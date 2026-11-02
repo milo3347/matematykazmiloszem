@@ -123,6 +123,24 @@
     if (gate) { gate.hidden = true; }
   }
 
+  /* ---------- kalendarz: zliczanie kliknięcia w ramce jako kontakt ---------- */
+  // Kalendarz Google to obca ramka, więc nie widać, co robi użytkownik w środku.
+  // Kliknięcie w ramkę (wybór dnia lub godziny) zliczamy jako sygnał rezerwacji.
+  // To przybliżenie: część osób kliknie i nie dokończy zapisu.
+  var calTracked = false;
+  function watchCalendar() {
+    window.addEventListener('blur', function () {
+      setTimeout(function () {
+        var a = document.activeElement;
+        var box = document.getElementById('cal-frame');
+        if (!calTracked && a && a.tagName === 'IFRAME' && box && box.contains(a)) {
+          calTracked = true;
+          lead('calendar');
+        }
+      }, 0);
+    });
+  }
+
   /* ---------- baner ---------- */
   function injectCss() {
     var st = document.createElement('style');
@@ -187,6 +205,7 @@
 
   function init() {
     injectCss();
+    watchCalendar();
     var v = readConsent();
     if (v === 'all') { loadGoogle(); loadCalendar(); }
     else if (v !== 'necessary') { showBanner(); }
