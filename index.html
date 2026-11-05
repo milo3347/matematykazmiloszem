@@ -9,14 +9,14 @@
 <meta property="og:locale" content="pl_PL">
 <meta property="og:title" content="Matematyka z Miłoszem – korepetycje online">
 <meta property="og:description" content="Korepetycje z matematyki online: szkoła podstawowa, egzamin ósmoklasisty, liceum i matura. Pierwsza 30-minutowa lekcja próbna za darmo.">
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%90%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1c2b4a;--muted:#55627a;--paper:#fbfcfe;--grid:#dfe6f1;--card:#fff;--red:#c0392b;--dash:#9fb0cf;
+:root{color-scheme:dark;--ink:#e6ecf7;--muted:#a4afc4;--paper:#121a2c;--grid:#1c2740;--card:#1a2540;--red:#ff7a6b;--dash:#3a4c73;
 --body:Figtree,"Segoe UI",Arial,sans-serif;--hand:Caveat,"Segoe Print",cursive;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e6ecf7;--muted:#a4afc4;--paper:#121a2c;--grid:#1c2740;--card:#1a2540;--red:#ff7a6b;--dash:#3a4c73}}
-:root[data-theme="dark"]{--ink:#e6ecf7;--muted:#a4afc4;--paper:#121a2c;--grid:#1c2740;--card:#1a2540;--red:#ff7a6b;--dash:#3a4c73}
+:root[data-theme="light"]{color-scheme:light;--ink:#1c2b4a;--muted:#55627a;--paper:#fbfcfe;--grid:#dfe6f1;--card:#fff;--red:#c0392b;--dash:#9fb0cf}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{margin:0;color:var(--ink);font:400 17px/1.6 var(--body);background-color:var(--paper);
@@ -43,6 +43,14 @@ nav a{text-decoration:none;font-size:.95rem;opacity:.9}
 nav a:hover{opacity:1;text-decoration:underline}
 nav .btn{background:#fff;color:#1c2b4a;border-color:#fff;padding:7px 14px;font-size:.92rem}
 @media(max-width:760px){nav a:not(.btn){display:none}}
+nav{gap:18px}
+.theme-toggle{display:inline-grid;place-items:center;width:36px;height:36px;padding:0;border-radius:50%;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);cursor:pointer;flex:none}
+.theme-toggle:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.theme-toggle:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.theme-toggle svg{width:18px;height:18px;display:block}
+.theme-toggle .i-moon{display:none}
+:root[data-theme="light"] .theme-toggle .i-sun{display:none}
+:root[data-theme="light"] .theme-toggle .i-moon{display:block}
 
 .hero{padding:70px 0 60px}
 .hero h1{font-size:clamp(2.4rem,6vw,4rem);margin-bottom:1.1rem}
@@ -110,8 +118,8 @@ footer{background:#1c2b4a;color:#b9c5dd;font-size:.9rem;padding:22px 0}
 .fab{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;box-shadow:4px 4px 0 var(--red);padding:12px 22px}
 @media(max-width:860px){.hero .grid{grid-template-columns:1fr}.sheet{transform:none}.stats .wrap{grid-template-columns:1fr 1fr}.vs{grid-template-columns:1fr}.steps4{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.steps4{grid-template-columns:1fr}}
-.fab{transition:opacity .25s ease,transform .25s ease}
-.fab.hide{opacity:0;pointer-events:none;transform:translate(-50%,24px)}
+.fab{transition:opacity .25s ease,transform .25s ease,visibility .25s}
+.fab.hide{opacity:0;pointer-events:none;visibility:hidden;transform:translate(-50%,24px)}
 .sheet{background:#fff}
 .sheet p{color:#55627a}
 .vidwrap{position:relative;isolation:isolate;aspect-ratio:724/676;background-color:#fff;background-image:linear-gradient(#e8edf5 2px,transparent 2px),linear-gradient(90deg,#e8edf5 2px,transparent 2px);background-size:28px 28px;border-radius:4px;overflow:hidden;box-shadow:inset -2px 0 0 #e8edf5}
@@ -157,7 +165,7 @@ footer a{color:#b9c5dd}
 <body>
 <header><div class="wrap bar">
   <a class="brand" href="#top">Matematyka z Miłoszem</a>
-  <nav aria-label="Menu"><a href="#o-mnie">O mnie</a><a href="#lekcje">Jak to wygląda</a><a href="#oferta">Oferta i ceny</a><a class="btn" href="#kontakt">Lekcja próbna</a></nav>
+  <nav aria-label="Menu"><a href="#o-mnie">O mnie</a><a href="#lekcje">Jak to wygląda</a><a href="#oferta">Oferta i ceny</a><a class="btn" href="#kontakt">Lekcja próbna</a><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Przełącz na jasny motyw" title="Przełącz na jasny motyw"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></nav>
 </div></header>
 
 <main id="top">
@@ -239,16 +247,23 @@ footer a{color:#b9c5dd}
   </div>
 </div></section>
 </main>
-<a class="btn fab" href="#kontakt">Umów darmową lekcję</a>
+<a class="btn fab hide" href="#kontakt">Umów darmową lekcję</a>
 <footer><div class="wrap">© Matematyka z Miłoszem · Korepetycje z matematyki online · <a href="polityka-prywatnosci.html">Polityka prywatności</a> · <a href="#" data-cookie-settings>Ustawienia cookies</a></div></footer>
 <script>
 (function(){
 var fab=document.querySelector('.fab'),target=document.getElementById('kontakt');
 if(!fab||!target)return;
-fab.addEventListener('click',function(){fab.classList.add('hide')});
+var SHOW_AFTER=300,pastTop=false,atContact=false,dismissed=false;
+function update(){fab.classList.toggle('hide',!pastTop||atContact||dismissed)}
+function onScroll(){pastTop=(window.pageYOffset||document.documentElement.scrollTop)>SHOW_AFTER;update()}
+fab.addEventListener('click',function(){dismissed=true;update()});
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
 if('IntersectionObserver' in window){
   new IntersectionObserver(function(e){
-    fab.classList.toggle('hide',e[0].isIntersecting);
+    atContact=e[0].isIntersecting;
+    if(atContact)dismissed=false;
+    update();
   },{threshold:0.15}).observe(target);
 }
 })();
@@ -289,6 +304,24 @@ function next(){
   },950);
 }
 vs.forEach(function(v){v.addEventListener('ended',function(){setTimeout(next,2200)})});
+})();
+</script>
+<script>
+(function(){
+var btn=document.getElementById('theme-toggle'),root=document.documentElement;
+if(!btn)return;
+function sync(){
+  var light=root.getAttribute('data-theme')==='light';
+  var label=light?'Przełącz na ciemny motyw':'Przełącz na jasny motyw';
+  btn.setAttribute('aria-label',label);btn.setAttribute('title',label);
+}
+btn.addEventListener('click',function(){
+  var next=root.getAttribute('data-theme')==='light'?'dark':'light';
+  root.setAttribute('data-theme',next);
+  try{localStorage.setItem('theme',next)}catch(e){}
+  sync();
+});
+sync();
 })();
 </script>
 <script src="cookies.js" defer></script>
