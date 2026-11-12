@@ -1,16 +1,3 @@
-/*
-  Zgoda na cookies + Google Analytics / Google Ads + wczytywanie kalendarza.
-
-  CO UZUPEŁNIĆ (tylko ten blok):
-    GA_ID  - identyfikator pomiaru Google Analytics 4 (zaczyna się od G-)
-    ADS_ID - identyfikator konta Google Ads (zaczyna się od AW-), opcjonalnie
-    ADS_LEAD_LABEL - pełna etykieta konwersji z Google Ads, opcjonalnie,
-                     np. 'AW-123456789/AbCdEfGhIjK'
-
-  Dopóki identyfikatory są puste lub zostają jako przykład (G-XXXXXXXXXX),
-  żaden skrypt Google Analytics ani Ads NIE jest ładowany.
-  Skrypty Google ładują się dopiero po kliknięciu "Akceptuję wszystkie".
-*/
 (function () {
   'use strict';
 
